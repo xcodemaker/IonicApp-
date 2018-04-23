@@ -1,7 +1,10 @@
 
-page-home {
-    font-size: 10em;
-    }
+// page-home {
+//     font-size: 10em;
+//     }
+ion-content{
+    // background-image: url('../../assets/imgs/background.png')  ;
+}
     .account-box
     {
         border: 2px solid rgba(153, 153, 153, 0.75);
@@ -22,28 +25,37 @@ page-home {
         width: 138px;
         height: 30px;
         text-align: center;
-        margin: 10px 0px 27px 40px;
+        margin: 10px 0px 27px 85px;
         background-position: 0px -4px;
         position: relative;
+    }
+    .logo-image{
+        text-align: center;
+        // margin-left: 110px;
     }
     
     .forgotLnk
     {
         margin-top: 10px;
         display: block;
+        border: none;
+        z-index: 10;
     }
     
     .purple-bg
     {
-        background-color: #6E329D;
+        background-color: rgb(49, 179, 16);
         color: #fff;
+        height: 45px;
+        // margin-left: 10px;
+        // margin-right: 10px;
     }
     .or-box
     {
         position: relative;
         border-top: 1px solid #dfdfdf;
-        padding-top: 20px;
-        margin-top:20px;
+        padding-top: 10px;
+        margin-top:10px;
     }
     .or
     {
@@ -61,20 +73,25 @@ page-home {
     }
     .btn-facebook
     {
-        background-color: #3F639E;
+        background-color: rgb(44, 75, 214);
         color: #fff;
         font-weight:bold;
         font-size: 12px;
+        height: 45px;
+        // margin-left: 5px;
+        // margin-right: 0px;
+        z-index: 10;
     }
     .btn-google
     {
-        background-color: #454545;
+        background-color: #e42b2b;
         color: #fff;
         font-weight:bold;
         font-size: 12px;
-    }
-    .btn-create-new{
-        font-size: 12px;
+        height: 45px;
+        // margin-left: 0px;
+        // margin-right: 5px;
+        // padding-left: 0;
     }
     .form-signin{
         font-size: 1.5rem;
@@ -82,11 +99,33 @@ page-home {
     .formClass{
         font-size: 1.5rem;
         padding: 0;
+        margin-top: 90px;
+        margin-bottom: 60px;
     }
     .row-block{
         padding: 10px;
         font-size: 10px;
     }
-    .all{
-        font-size: 20px;
+    .progot-password{
+float: right;
     }
+    .register{
+        color: green;
+    }
+    .row-register
+    {
+        font-size: 17px;
+        text-align: center;
+        font-weight: bold;
+    }
+//     .main-div1{
+// background-color: floralwhite;
+// opacity: 0.5;
+
+//     }
+// .main-div2{
+//         background-color: floralwhite;
+//         padding: 10px;
+//         opacity: 0.5;
+        
+//             }

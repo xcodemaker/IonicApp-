@@ -7,49 +7,55 @@
 </ion-header>
 
 <ion-content padding>
-  <div class="row all">
-    <div class="col-md-3 col-md-offset-4">
-        <div class="account-box">
+        <div class="main-div1">
+  <div class="main-div2">
+        <div class="main-div3">
             <div class="logo ">
-                <img src="../../assets/icon/png" alt=""/>
+                <img class="logo-image" src="../../assets/icon/TELogo.png" alt="logo" style=""/>
+                <!-- <h1>TyreRepo</h1> -->
             </div>
             <form class="form-signin formClass" action="#">
             <div class="form-group">
-                <input style="font-size:15px" type="text" class="form-control" placeholder="Email" required autofocus />
+                <input style="font-size:15px; height:50px; width:100%; opacity:0.7;" type="text" class="form-control" placeholder="Email" required autofocus />
             </div>
             <div class="form-group">
-                <input style="font-size:15px" type="password" class="form-control" placeholder="Password" required />
+                <input style="font-size:15px; height:50px; width:100%; opacity:0.7" type="password" class="form-control" placeholder="Password" required />
             </div>
-            <label class="checkbox">
+            <!-- <label class="checkbox">
                 <input type="checkbox" value="remember-me" />
                 Keep me signed in
-            </label>
-            <button class=" purple-bg"  type="submit" ion-button full round>
-                Sign in</button>
+            </label> -->
+            <a href="#" class="progot-password">Frogot password</a>
+            
             </form>
-            <a class="forgotLnk" href="http://www.jquery2dotnet.com">I can't access my account</a>
+           
             <div class="or-box">
-                <span class="or">OR</span>
-                <div class="row">
-                    <!-- <div class="col-md-6 row-block">
-                        <a href="http://www.jquery2dotnet.com" class="btn btn-facebook btn-block">Facebook</a>
-                    </div> -->
-                    <button class="btn-facebook" ion-button full round>Facebook</button>
-                    <!-- <div class="col-md-6 row-block">
-                        <a href="http://www.jquery2dotnet.com" class="btn btn-google btn-block">Google</a>
-                    </div> -->
-                    <button class="btn-google" ion-button full round>Google</button>
-                </div>
+            
+                <div class="row" style="padding:10px">
+                        
+                        <ion-grid>
+                                <ion-row>
+                                        <ion-col col-12>
+                                        <button class=" purple-bg"  type="submit" ion-button  block >Login</button>
+                                        </ion-col>
+                                </ion-row>
+                                <ion-row>
+                                        <ion-col col-6>
+                                                <button class="btn-facebook" ion-button block>Facebook</button>
+                                        </ion-col>
+                                        <ion-col col-6>
+                                                <button class="btn-google" ion-button block>Google</button>
+                                        </ion-col>
+                                </ion-row>
+                        </ion-grid>
+                        </div>
             </div>
             <div class="or-box row-block">
-                <div class="row">
-                    <!-- <div class="col-md-12 row-block">
-                        <a href="http://www.jquery2dotnet.com" class="btn btn-primary btn-block">Create New Account</a>
-                    </div> -->
-                    <button class="btn-create-new" ion-button full round>Create New Account</button>
+                <div class="row row-register">
+                    <p style="margin-left:35px">don't have an account? <span class="register">register now!</span></p>
                 </div>
             </div>
         </div>
-    </div>
-</div>
+        </div>
+        </div>
 </ion-content>
