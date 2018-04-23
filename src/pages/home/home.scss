@@ -64,17 +64,29 @@ page-home {
         background-color: #3F639E;
         color: #fff;
         font-weight:bold;
+        font-size: 12px;
     }
     .btn-google
     {
         background-color: #454545;
         color: #fff;
         font-weight:bold;
+        font-size: 12px;
+    }
+    .btn-create-new{
+        font-size: 12px;
     }
     .form-signin{
         font-size: 1.5rem;
     }
     .formClass{
         font-size: 1.5rem;
+        padding: 0;
     }
-    
+    .row-block{
+        padding: 10px;
+        font-size: 10px;
+    }
+    .all{
+        font-size: 20px;
+    }
