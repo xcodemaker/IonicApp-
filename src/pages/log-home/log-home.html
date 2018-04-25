@@ -14,5 +14,50 @@
 
 
 <ion-content padding>
+    <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
+    <ion-list>
+        <ion-item *ngFor="let item of items">
+          {{ item }}
+        </ion-item>
+      </ion-list>
 
+      <div class="or-box-select">
+            
+          <div class="row" style="padding:10px">
+                  
+                  <ion-grid>
+                          <ion-row>
+                                  <ion-col col-6 (click)="navigateToAddRecords()">
+                                  <div  class="home-select">
+                                      <img class="logo-image-select" src="assets/icon/recordadd.png" alt="logo" />
+                                      <p>Records Entry</p>
+                                  </div>
+                                  </ion-col>
+                                  <ion-col col-6>
+                                      <div class="home-select">
+                                          <img class="logo-image-select" src="assets/icon/give.png" alt="logo" />
+                                          <p>Give Aways</p>
+                                      </div>
+                                      
+                                  </ion-col>
+                          </ion-row>
+                          <ion-row>
+                                  <ion-col col-6>
+                                      <div class="home-select">
+                                          <img class="logo-image-select" src="assets/icon/recieve.png" alt="logo" />
+                                          <p>Recieve From</p>
+                                      </div>
+                                      
+                                  </ion-col>
+                                  <ion-col col-6>
+                                      <div class="home-select">
+                                          <img class="logo-image-select" src="assets/icon/server.png" alt="logo" />
+                                          <p>Reports</p>
+                                      </div>
+                                      
+                                  </ion-col>
+                          </ion-row>
+                  </ion-grid>
+                  </div>
+      </div>
 </ion-content>

@@ -1,17 +1,16 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
+            <ion-icon name="key"> </ion-icon>
       Sing in
     </ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-        <div class="main-div1">
-  <div class="main-div2">
-        <div class="main-div3">
+        
             <div class="logo ">
-                <img class="logo-image" src="../../assets/icon/TELogo.png" alt="logo" style=""/>
+                <img class="logo-image" src="assets/icon/TELogo.png" alt="logo" />
                 <!-- <h1>TyreRepo</h1> -->
             </div>
             <form class="form-signin formClass" action="#">
@@ -25,7 +24,7 @@
                 <input type="checkbox" value="remember-me" />
                 Keep me signed in
             </label> -->
-            <a href="#" class="progot-password" (click)="navigateToFrogotPassword()">Forgot password</a>
+            <p class="forgot-password" (click)="navigateToFrogotPassword()">Forgot password</p>
             
             </form>
            
@@ -59,7 +58,5 @@
                     <p style="margin-left:35px">don't have an account? <span class="register" (click)="navigateToRegister()">register now!</span></p>
                 </div>
             </div>
-        </div>
-        </div>
-        </div>
+        
 </ion-content>
