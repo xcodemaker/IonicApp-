@@ -1,7 +1,7 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      Ionic Blank
+      Sing in
     </ion-title>
   </ion-navbar>
 </ion-header>
@@ -25,7 +25,7 @@
                 <input type="checkbox" value="remember-me" />
                 Keep me signed in
             </label> -->
-            <a href="#" class="progot-password">Frogot password</a>
+            <a href="#" class="progot-password" (click)="navigateToFrogotPassword()">Forgot password</a>
             
             </form>
            
@@ -36,15 +36,19 @@
                         <ion-grid>
                                 <ion-row>
                                         <ion-col col-12>
-                                        <button class=" purple-bg"  type="submit" ion-button  block >Login</button>
+                                        <button (click)="doConfirm()" class=" purple-bg"  type="submit" ion-button  block >Login</button>
                                         </ion-col>
                                 </ion-row>
                                 <ion-row>
                                         <ion-col col-6>
-                                                <button class="btn-facebook" ion-button block>Facebook</button>
+                                                <button class="btn-facebook" ion-button block>
+                                                    <ion-icon name="logo-facebook"></ion-icon>
+                                                </button>
                                         </ion-col>
                                         <ion-col col-6>
-                                                <button class="btn-google" ion-button block>Google</button>
+                                                <button class="btn-google" ion-button block>
+                                                    <ion-icon name="logo-googleplus"></ion-icon>
+                                                </button>
                                         </ion-col>
                                 </ion-row>
                         </ion-grid>
@@ -52,7 +56,7 @@
             </div>
             <div class="or-box row-block">
                 <div class="row row-register">
-                    <p style="margin-left:35px">don't have an account? <span class="register">register now!</span></p>
+                    <p style="margin-left:35px">don't have an account? <span class="register" (click)="navigateToRegister()">register now!</span></p>
                 </div>
             </div>
         </div>
