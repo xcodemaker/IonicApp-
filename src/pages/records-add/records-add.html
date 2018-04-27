@@ -14,26 +14,65 @@
 
 
 <ion-content padding>
-    <ion-tabs class="tabs-icon-top">
+  <ion-segment  class="SwipedTabs-tabs"  >
+		<ion-segment-button *ngFor='let tab of tabs ; let i = index ' value="IngoreMe" (click)="selectTab(i)"
+		[ngClass]='{ "SwipedTabs-activeTab" : ( this.SwipedTabsSlider  && ( this.SwipedTabsSlider.getActiveIndex() === i || (  tabs.length -1 === i&& this.SwipedTabsSlider.isEnd()))) }' >
+			{{tab}}
+		</ion-segment-button>
+	</ion-segment>
 
+	<!-- here is our dynamic line  "indicator"-->
+	<div id='indicator' class="SwipedTabs-indicatorSegment" [ngStyle]="{'width.%': (100/this.tabs.length)}"></div>
 
-        <!-- Dashboard Tab -->
-        <ion-tab title="Dashboard" icon="icon ion-home" href="#/tab/dash">
-        
-        </ion-tab>
-       
-       
-        <!-- Friends Tab -->
-        <ion-tab title="Friends" icon="icon ion-heart" href="#/tab/friends">
-        
-        </ion-tab>
-       
-       
-        <!-- Account Tab -->
-        <ion-tab title="Account" icon="icon ion-gear-b" href="#/tab/account">
-        
-        </ion-tab>
-       
-       
-       </ion-tabs>
+	<ion-slides #SwipedTabsSlider  (ionSlideDrag)="animateIndicator($event)"
+							(ionSlideWillChange)="updateIndicatorPosition()"
+							(ionSlideDidChange)="updateIndicatorPosition()"
+							(pan)="updateIndicatorPosition()"
+							[pager]="false"
+				>
+		<ion-slide>
+			<div class="or-box">
+            
+        <div class="row" style="padding:10px">
+                
+                <ion-grid>
+                        <ion-row>
+                                <ion-col col-12>
+                                <button  class="btn-add"  type="submit" (click)="navigateToAddTyre()" ion-button  block >Add details</button>
+                                </ion-col>
+                        </ion-row>
+                        <ion-row>
+                                <ion-col col-12>
+                                        <button class="btn-remove" (click)="navigateToEditRemoveTyre()" ion-button block>
+                                            Edit/Remove
+                                        </button>
+                                </ion-col>
+                        </ion-row>
+                </ion-grid>
+                </div>
+    </div>
+		</ion-slide>
+		<ion-slide>
+			<div class="or-box">
+            
+        <div class="row" style="padding:10px">
+                
+                <ion-grid>
+                        <ion-row>
+                                <ion-col col-12>
+                                <button (click)="navigateToAddServiceCenter()"   class="btn-add"  type="submit" ion-button  block >Add details</button>
+                                </ion-col>
+                        </ion-row>
+                        <ion-row>
+                                <ion-col col-12>
+                            <button (click)="navigateToEdiitRemoveServiceCenter()"  class="btn-remove" ion-button block>
+                                            Edit/Remove
+                                        </button>
+                                </ion-col>
+                        </ion-row>
+                </ion-grid>
+                </div>
+    </div>
+		</ion-slide>
+	</ion-slides>
 </ion-content>

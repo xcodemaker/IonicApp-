@@ -1,3 +1,55 @@
 page-records-add {
-
+    .SwipedTabs-indicatorSegment
+    {
+        -webkit-transition: 0.3s all;
+        -moz-transition:  0.3s all;
+        -o-transition:  0.3s all;
+        transition:  0.3s all;
+        transform-origin: top 0 left 0;
+        height: 1px;
+	    position: relative;
+	    top: -2px;
+	    background-color: black !important;
+    }
+    .SwipedTabs-tabs ion-segment-button
+    {
+    	border:none !important;
+    	color:gray!important;
+    	background-color:white!important;
+    }
+     .SwipedTabs-tabs ion-segment-button.SwipedTabs-activeTab
+    {
+        color:black !important;
+    }
+    .SwipedTabs-tabs
+    {
+    	border-bottom: solid 1px #e6e6e6  !important;
+    }
+    .or-box
+    {
+        position: relative;
+        border-top: 1px solid #dfdfdf;
+        padding-top: 10px;
+        margin-top:10px;
+    }
+    .btn-remove
+    {
+        background-color: rgb(226, 17, 17);
+        color: #fff;
+        font-weight:bold;
+        font-size: 12px;
+        height: 45px;
+        // margin-left: 5px;
+        // margin-right: 0px;
+        z-index: 10;
+    }
+    .btn-add
+    {
+        background-color: rgb(49, 179, 16);
+        color: #fff;
+        height: 45px;
+        // margin-left: 10px;
+        // margin-right: 10px;
+    }
+   
 }

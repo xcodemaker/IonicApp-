@@ -1,7 +1,7 @@
 
-// page-home {
-//     font-size: 10em;
-//     }
+page-home {
+    //font-size: 10em;
+    
 ion-content{
     //background-image: url('../assets/imgs/background.png');
 }
@@ -99,8 +99,8 @@ ion-content{
     .formClass{
         font-size: 1.5rem;
         padding: 0;
-        margin-top: 90px;
-        margin-bottom: 60px;
+        margin-top: 60px;
+        margin-bottom: 40px;
     }
     .row-block{
         padding: 10px;
@@ -118,10 +118,11 @@ color: green;
     }
     .row-register
     {
-        font-size: 17px;
+        font-size: 15px;
         text-align: center;
         font-weight: bold;
     }
+}
 //     .main-div1{
 // background-color: floralwhite;
 // opacity: 0.5;
