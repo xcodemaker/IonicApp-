@@ -1,0 +1,78 @@
+page-edit-remove-service-center {
+    .logo
+    {
+        width: 138px;
+        height: 30px;
+        text-align: center;
+        margin: 10px 10px 10px 85px;
+        background-position: 0px -4px;
+        position: relative;
+        
+    }
+    .logo-image{
+        text-align: center;
+        // margin-left: 110px;
+    }
+    
+    
+    
+    .purple-bg
+    {
+        background-color: rgb(25, 69, 214);
+        color: #fff;
+        height: 45px;
+        // margin-left: 10px;
+        // margin-right: 10px;
+    }
+    .or-box
+    {
+        position: relative;
+        border-top: 1px solid #dfdfdf;
+        padding-top: 0;
+        margin-top:10px;
+    }
+    .or
+    {
+        color: #666666;
+        background-color: #ffffff;
+        position: absolute;
+        text-align: center;
+        top: -8px;
+        width: 40px;
+        left: 90px;
+    }
+    .account-box .btn:hover
+    {
+        color: #fff;
+    }
+   
+    .remove-btn
+    {
+        background-color: #e42b2b;
+        color: #fff;
+        font-weight:bold;
+        font-size: 12px;
+        height: 45px;
+        // margin-left: 0px;
+        // margin-right: 5px;
+        // padding-left: 0;
+    }
+    .form-signin{
+        font-size: 1.5rem;
+    }
+    .formRegisterClass{
+        font-size: 1.5rem;
+        padding: 0;
+        margin-top: 40px;
+        margin-bottom: 20px;
+    }
+    .row-block{
+        padding: 10px;
+        font-size: 10px;
+    }
+   
+    .search-bar{
+        margin-top: 10px;
+        width: 100%;
+    }
+}
