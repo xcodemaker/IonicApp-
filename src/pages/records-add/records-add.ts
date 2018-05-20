@@ -4,6 +4,8 @@ import {AddTyrePage} from '../add-tyre/add-tyre';
 import {EditRemoveTyrePage} from '../edit-remove-tyre/edit-remove-tyre';
 import {AddServiceCenterPage} from '../add-service-center/add-service-center';
 import {EditRemoveServiceCenterPage} from '../edit-remove-service-center/edit-remove-service-center';
+import{ AddBusPage} from '../add-bus/add-bus';
+import {EditRemoveBusPage}from '../edit-remove-bus/edit-remove-bus';
 
 /**
  * Generated class for the RecordsAddPage page.
@@ -24,7 +26,7 @@ export class RecordsAddPage {
   tabs:any=[];
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
-    this.tabs=["Tyres","Service Center"];
+    this.tabs=["Tyres","Service Center","Bus"];
   }
 
   ionViewDidLoad() {
@@ -63,6 +65,12 @@ export class RecordsAddPage {
  }
  navigateToEdiitRemoveServiceCenter(){
   this.navCtrl.push('EditRemoveServiceCenterPage');
+ }
+ navigateToAddBus(){
+  this.navCtrl.push('AddBusPage');
+ }
+ navigateToEdiitRemoveBus(){
+  this.navCtrl.push('EditRemoveBusPage');
  }
 
 }

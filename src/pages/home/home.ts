@@ -4,6 +4,8 @@ import { NavController,AlertController } from 'ionic-angular';
 import {LogHomePage} from '../log-home/log-home';
 import {RegisterPage} from '../register/register';
 import {FrogotPasswordPage} from '../frogot-password/frogot-password';
+import { DatabaseProvider } from '../../providers/database/database';
+
 
 
 
@@ -13,10 +15,13 @@ import {FrogotPasswordPage} from '../frogot-password/frogot-password';
 })
 export class HomePage {
   loghomepage=LogHomePage;
+  public employee=["dhammika","aafsad"];
 
-  constructor(public navCtrl: NavController, public alerCtrl: AlertController) {
-
+  constructor(public navCtrl: NavController, public alerCtrl: AlertController,public database:DatabaseProvider) {
+    this.database.createPouchDB();
+    this.database.create(this.employee);
   }
+  
 
    navigateHome(){
      this.navCtrl.push('LogHomePage');

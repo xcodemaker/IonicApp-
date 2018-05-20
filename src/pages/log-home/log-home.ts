@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { RecordsAddPage } from '../records-add/records-add';
+import {GiveAwaysPage} from '../give-aways/give-aways';
+import {RecieveFromPage} from '../recieve-from/recieve-from';
+import {ReportPage} from '../report/report';
 
 /**
  * Generated class for the LogHomePage page.
@@ -25,6 +28,17 @@ export class LogHomePage {
   navigateToAddRecords(){
     this.navCtrl.push('RecordsAddPage');
  }
+
+ navigateToGiveAways(){
+  this.navCtrl.push('GiveAwaysPage');
+}
+
+navigateToRecieveFrom(){
+  this.navCtrl.push('RecieveFromPage');
+}
+navigateToReport(){
+  this.navCtrl.push('ReportPage');
+}
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad LogHomePage');
