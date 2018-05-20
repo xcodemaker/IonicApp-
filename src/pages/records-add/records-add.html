@@ -28,10 +28,9 @@
 							(ionSlideWillChange)="updateIndicatorPosition()"
 							(ionSlideDidChange)="updateIndicatorPosition()"
 							(pan)="updateIndicatorPosition()"
-							[pager]="false"
-				>
-		<ion-slide>
-			<div class="or-box">
+							[pager]="false">
+<ion-slide>
+	<div class="or-box">
             
         <div class="row" style="padding:10px">
                 
@@ -51,9 +50,9 @@
                 </ion-grid>
                 </div>
     </div>
-		</ion-slide>
-		<ion-slide>
-			<div class="or-box">
+</ion-slide>
+<ion-slide>
+    <div class="or-box">
             
         <div class="row" style="padding:10px">
                 
@@ -73,6 +72,28 @@
                 </ion-grid>
                 </div>
     </div>
-		</ion-slide>
+</ion-slide>
+<ion-slide>
+        <div class="or-box">
+                
+            <div class="row" style="padding:10px">
+                    
+                    <ion-grid>
+                            <ion-row>
+                                    <ion-col col-12>
+                                    <button (click)="navigateToAddBus()"   class="btn-add"  type="submit" ion-button  block >Add details</button>
+                                    </ion-col>
+                            </ion-row>
+                            <ion-row>
+                                    <ion-col col-12>
+                                <button (click)="navigateToEdiitRemoveBus()"  class="btn-remove" ion-button block>
+                                                Edit/Remove
+                                            </button>
+                                    </ion-col>
+                            </ion-row>
+                    </ion-grid>
+                    </div>
+        </div>
+    </ion-slide>
 	</ion-slides>
 </ion-content>
