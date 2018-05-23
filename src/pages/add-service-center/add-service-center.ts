@@ -1,6 +1,9 @@
+import { ServiceCenter } from './../../models/service-center/service-center.interface';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import {FormControl} from '@angular/forms';
+import { FirebaseListObservable } from 'angularfire2/database-deprecated';
+import { DataProvider } from '../../providers/data/data';
 
 export class State {
   constructor(public name: string, public population: string, public flag: string) { }
@@ -19,13 +22,49 @@ export class State {
   templateUrl: 'add-service-center.html',
 })
 export class AddServiceCenterPage {
+  hasError: boolean;
+  errorMessage: string;
+  serviceCenter = {} as ServiceCenter;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-    
+  serviceListRef$: FirebaseListObservable<ServiceCenter[]>
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, public database: DataProvider) {
+    this.serviceListRef$ = this.database.list('service-center');
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad AddServiceCenterPage');
   }
+  addServiceCenter(serviceCenter: ServiceCenter) {
+    //this.tyreListRef$ = this.database.list(`tyre-list/${this.tyreList.tyreNumber}`);
+
+    if (typeof(serviceCenter.name) == "undefined"){
+        this.errorMessage="Service center name not entered";
+        this.hasError = true;
+    }else if(typeof(serviceCenter.address) == "undefined"){
+      this.errorMessage="Service center address not entered";
+      this.hasError = true;
+    }
+    else if(typeof(serviceCenter.tele) == "undefined"){
+      this.errorMessage="Service center telephone number not entered";
+      this.hasError = true;
+    }
+    else{
+
+    this.serviceListRef$.push({
+      name: this.serviceCenter.name,
+      address: this.serviceCenter.address,
+      tele: Number(this.serviceCenter.tele)
+    });
+  }
+
+    // Reset our ShoppingItem
+    this.serviceCenter = {} as ServiceCenter;
+
+    // Navigate the user back to the ShoppingListPage
+    //this.navCtrl.push('RecordsAddPage');
+    //this.navCtrl.pop();
+  
+}
   
 }

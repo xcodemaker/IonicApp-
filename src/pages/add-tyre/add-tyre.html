@@ -20,24 +20,19 @@
 </div>
 <form class="form-signin formRegisterClass" action="#">
     <div class="form-group">
-        <input style="font-size:15px; height:50px; width:100%; opacity:0.7;" type="text" class="form-control" placeholder="Tyre Number" required autofocus />
+        <input style="font-size:15px; height:50px; width:100%; opacity:0.7;" type="text" class="form-control" placeholder="Tyre Number"  autofocus [(ngModel)]="tyreList.tyreNumber" [ngModelOptions]="{standalone: true}" required/>
     </div>
     <div class="form-group">
-            <input list="browsers" name="myBrowser" placeholder="Tyre House" class="form-control" style="font-size:15px; height:50px; width:100%; opacity:0.7;"/>
-                    <datalist id="browsers">
-                      <option value="Chrome">
-                      <option value="Firefox">
-                      <option value="Internet Explorer">
-                      <option value="Opera">
-                      <option value="Safari">
-                      <option value="Microsoft Edge">
-                    </datalist>
+            <input list="browsers" name="myBrowser" placeholder="Tyre House" class="form-control" style="font-size:15px; height:50px; width:100%; opacity:0.7;" [(ngModel)]="tyreList.tyreHouse" [ngModelOptions]="{standalone: true}" required/>
+            <datalist id="browsers">
+              <option *ngFor="let item of tyreListRef$ | async" value="{{item.tyreHouse}}">
+            </datalist>
             </div>
 <div class="form-group">
-    <input style="font-size:15px; height:50px; width:100%; opacity:0.7" type="number" class="form-control" placeholder="Price" required />
+    <input style="font-size:15px; height:50px; width:100%; opacity:0.7" type="number" class="form-control" placeholder="Price"  [(ngModel)]="tyreList.tyrePrice" [ngModelOptions]="{standalone: true}" required/>
 </div>
 <div class="form-group">
-    <input style="font-size:15px; height:50px; width:100%; opacity:0.7" type="date" class="form-control" name="Date" placeholder="Date" required />
+    <input style="font-size:15px; height:50px; width:100%; opacity:0.7" type="date" class="form-control" name="Date" placeholder="Date"  [(ngModel)]="tyreList.purchesDate" [ngModelOptions]="{standalone: true}" required/>
 </div>
 <script type="text/javascript">
     document.getElementById('Date').value = new Date().toDateInputValue();
@@ -50,7 +45,7 @@
             <ion-grid>
                     <ion-row>
                             <ion-col col-12>
-                            <button  class=" purple-bg"  type="submit" ion-button  block >Add</button>
+                            <button  class=" purple-bg"  type="submit" ion-button  block (click)="addTyreList(tyreList)" >Add</button>
                             </ion-col>
                     </ion-row>
                     <ion-row>
@@ -58,5 +53,6 @@
                     </ion-row>
             </ion-grid>
             </div>
+            <p ion-text color="danger" *ngIf="hasError">{{errorMessage}}</p>
 </div>
 </ion-content>

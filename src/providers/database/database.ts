@@ -19,14 +19,5 @@ export class DatabaseProvider {
     console.log('Hello DatabaseProvider Provider');
   }
 
-//   createPouchDB() {
-//     PouchDB.plugin(cordovaSqlitePlugin);
-//     this.pdb = new PouchDB('employees.db', 
-//     { adapter: 'cordova-sqlite' });
-//     console.log('create database');
-// }
-// create(employee) {  
-//   return this.pdb.post(employee);
-// } 
 
 }

@@ -19,21 +19,19 @@
       
     </div>
     <form class="form-signin formRegisterClass" action="#">
-        <ion-searchbar class="search-bar" (ionInput)="getItems($event)"></ion-searchbar>
-        <ion-list>
-            <ion-item *ngFor="let item of items">
-              {{ item }}
-            </ion-item>
-          </ion-list>
+        <input list="browsers" name="myBrowser" placeholder="Search" class="form-control search-bar" style="font-size:15px; height:50px; width:100%; opacity:0.7;" (change)="setItems($event)" />
+                  <datalist id="browsers">
+                    <option *ngFor="let item of items" value="{{item.name}}" (click)="setItems($event)" >
+                  </datalist>
         <div class="form-group">
-            <input style="font-size:15px; height:50px; width:100%; opacity:0.7;" type="text" class="form-control" placeholder="Name" required autofocus />
+            <input style="font-size:15px; height:50px; width:100%; opacity:0.7;" type="text" class="form-control" placeholder="Name" [(ngModel)]="serviceCenter.name" [ngModelOptions]="{standalone: true}" required autofocus />
         </div>
   
     <div class="form-group">
-        <input style="font-size:15px; height:50px; width:100%; opacity:0.7" type="textarea" class="form-control" placeholder="Address" required />
+        <input style="font-size:15px; height:50px; width:100%; opacity:0.7" type="textarea" class="form-control" placeholder="Address" required [(ngModel)]="serviceCenter.address" [ngModelOptions]="{standalone: true}" />
     </div>
     <div class="form-group">
-        <input style="font-size:15px; height:50px; width:100%; opacity:0.7" type="tel" class="form-control" placeholder="Phone Number" required />
+        <input style="font-size:15px; height:50px; width:100%; opacity:0.7" type="number" class="form-control" placeholder="Phone Number" required  [(ngModel)]="serviceCenter.tele" [ngModelOptions]="{standalone: true}"/>
     </div>
     </form>
     
@@ -43,10 +41,10 @@
                 <ion-grid>
                         <ion-row>
                             <ion-col col-6>
-                                <button  class=" purple-bg"  type="submit" ion-button  block >Edit</button>
+                                <button  class=" purple-bg"  type="submit" ion-button  block (click)="updateServiceCenter(serviceCenter)" >Edit</button>
                                 </ion-col>
                                 <ion-col col-6>
-                                  <button  class=" remove-btn"  type="submit" ion-button  block >Remove</button>
+                                  <button  class=" remove-btn"  type="submit" ion-button  block  (click)="removeServiceCenter()">Remove</button>
                                   </ion-col>
                         </ion-row>
                         
