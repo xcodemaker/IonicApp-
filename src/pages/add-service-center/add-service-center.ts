@@ -1,6 +1,6 @@
 import { ServiceCenter } from './../../models/service-center/service-center.interface';
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import {FormControl} from '@angular/forms';
 import { FirebaseListObservable } from 'angularfire2/database-deprecated';
 import { DataProvider } from '../../providers/data/data';
@@ -28,7 +28,7 @@ export class AddServiceCenterPage {
 
   serviceListRef$: FirebaseListObservable<ServiceCenter[]>
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public database: DataProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public database: DataProvider,public alertCtrl: AlertController) {
     this.serviceListRef$ = this.database.list('service-center');
   }
 
@@ -56,6 +56,7 @@ export class AddServiceCenterPage {
       address: this.serviceCenter.address,
       tele: Number(this.serviceCenter.tele)
     });
+    this.presentAlert();
   }
 
     // Reset our ShoppingItem
@@ -65,6 +66,15 @@ export class AddServiceCenterPage {
     //this.navCtrl.push('RecordsAddPage');
     //this.navCtrl.pop();
   
+}
+presentAlert(){
+  const alert = this.alertCtrl.create({
+    title: 'Record added!',
+    subTitle: `New service center  added to database`,
+   buttons: ['Okay']
+  });
+  alert.onDidDismiss(() => console.log('Alert was dismissed by the user'));
+  alert.present();
 }
   
 }

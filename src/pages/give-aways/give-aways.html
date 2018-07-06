@@ -7,7 +7,7 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>GiveAways</ion-title>
+    <ion-title></ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -18,33 +18,24 @@
         <img class="logo-image" src="assets/icon/TELogo.png" alt="logo" style=""/>
     </div>
     <form class="form-signin formRegisterClass" action="#">
-        <div class="form-group">
-            <input list="browsers" name="myBrowser" placeholder="Tyre Number" class="form-control" style="font-size:15px; height:50px; width:100%; opacity:0.7;"/>
-                    <datalist id="browsers">
-                      <option value="Chrome">
-                      <option value="Firefox">
-                      <option value="Internet Explorer">
-                      <option value="Opera">
-                      <option value="Safari">
-                      <option value="Microsoft Edge">
-                    </datalist>
-            </div>
+      
             <div class="form-group">
-                <input list="browsers" name="myBrowser" placeholder="Tyre House" class="form-control" style="font-size:15px; height:50px; width:100%; opacity:0.7;"/>
-                        <datalist id="browsers">
-                          <option value="Chrome">
-                          <option value="Firefox">
-                          <option value="Internet Explorer">
-                          <option value="Opera">
-                          <option value="Safari">
-                          <option value="Microsoft Edge">
+              <input list="browsers" name="myBrowser" placeholder="Tyre Number" class="form-control" style="font-size:15px; height:50px; width:100%; opacity:0.7;" [(ngModel)]="giveAways.tyreNumber" [ngModelOptions]="{standalone: true}"/> 
+                      <datalist id="browsers">
+                        <option *ngFor="let item of items" value="{{item.tyreNumber.tyre}}">
+                      </datalist>
+              </div>
+              <div class="form-group">
+                <input list="browsers1" name="myBrowser" placeholder="Tyre House" class="form-control" style="font-size:15px; height:50px; width:100%; opacity:0.7;" [(ngModel)]="giveAways.tyreHouse" [ngModelOptions]="{standalone: true}"/>
+                        <datalist id="browsers1">
+                          <option *ngFor="let tyre of tyres" value="{{tyre.name}}">
                         </datalist>
                 </div>
     <div class="form-group">
-        <input style="font-size:15px; height:50px; width:100%; opacity:0.7" type="date" class="form-control" placeholder="Date" required />
+        <input style="font-size:15px; height:50px; width:100%; opacity:0.7" type="date" class="form-control" placeholder="Date" required [(ngModel)]="giveAways.giveDate" [ngModelOptions]="{standalone: true}" />
     </div>
     <div class="form-group">
-        <input list="reason" name="myBrowser" placeholder="Reason" class="form-control" style="font-size:15px; height:50px; width:100%; opacity:0.7;"/>
+        <input list="reason" name="myBrowser" placeholder="Reason" class="form-control" style="font-size:15px; height:50px; width:100%; opacity:0.7;" [(ngModel)]="giveAways.reason" [ngModelOptions]="{standalone: true}"/>
                 <datalist id="reason">
                   <option value="Dag">
                   <option value="Tyre Punch">
@@ -58,7 +49,7 @@
                 <ion-grid>
                         <ion-row>
                                 <ion-col col-12>
-                                <button  class=" purple-bg"  type="submit" ion-button  block >Add</button>
+                                <button  class=" purple-bg"  type="submit" ion-button  block (click)="addGiveAways(giveAways)">Add</button>
                                 </ion-col>
                         </ion-row>
                         <ion-row>

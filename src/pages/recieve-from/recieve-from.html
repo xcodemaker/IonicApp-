@@ -7,7 +7,7 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>RecieveFrom</ion-title>
+    <ion-title></ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -19,27 +19,22 @@
     </div>
     <form class="form-signin formRegisterClass" action="#">
         <div class="form-group">
-        <input list="browsers" name="myBrowser" placeholder="Tyre Number" class="form-control" style="font-size:15px; height:50px; width:100%; opacity:0.7;"/>
-                <datalist id="browsers">
-                  <option value="Chrome">
-                  <option value="Firefox">
-                  <option value="Internet Explorer">
-                  <option value="Opera">
-                  <option value="Safari">
-                  <option value="Microsoft Edge">
-                </datalist>
-        </div>
+            <input list="browsers" name="myBrowser" placeholder="Tyre Number" class="form-control search-bar" style="font-size:15px; height:50px; width:100%; opacity:0.7;" (change)="setItems($event)" [(ngModel)]="giveAways.tyreNumber" [ngModelOptions]="{standalone: true}" />
+                    <datalist id="browsers">
+                      <option *ngFor="let item of items" value="{{item.tyreNumber.tyre}}" (click)="setItems($event)" >
+                    </datalist>
+            </div>
         <div class="form-group">
-            <input style="font-size:15px; height:50px; width:100%; opacity:0.7;" type="text" class="form-control" placeholder="Tyre House" required autofocus readonly/>
-        </div>
+            <input name="myBrowser" placeholder="Tyre House" class="form-control" style="font-size:15px; height:50px; width:100%; opacity:0.7;" [(ngModel)]="giveAways.tyreHouse" [ngModelOptions]="{standalone: true}" readonly/>
+            </div>
     <div class="form-group">
-        <input style="font-size:15px; height:50px; width:100%; opacity:0.7" type="date" class="form-control" placeholder="Give Date" required readonly />
+        <input style="font-size:15px; height:50px; width:100%; opacity:0.7" type="date" class="form-control" name="Date" placeholder="Give Date" required  [(ngModel)]="giveAways.giveDate" [ngModelOptions]="{standalone: true}" readonly/>
     </div>
     <div class="form-group">
-        <input style="font-size:15px; height:50px; width:100%; opacity:0.7" type="date" class="form-control" placeholder="Recieve Date" required  />
+        <input style="font-size:15px; height:50px; width:100%; opacity:0.7" type="date" class="form-control" placeholder="Recieve Date" required [(ngModel)]="giveAways.recieveDate" [ngModelOptions]="{standalone: true}" />
     </div>
     <div class="form-group">
-        <input style="font-size:15px; height:50px; width:100%; opacity:0.7" type="number" class="form-control" placeholder="Bill Amount" required  />
+        <input style="font-size:15px; height:50px; width:100%; opacity:0.7" type="number" class="form-control" placeholder="Bill Amount" required  [(ngModel)]="giveAways.billAmount" [ngModelOptions]="{standalone: true}" />
     </div>
     </form>
     
@@ -49,7 +44,7 @@
                 <ion-grid>
                         <ion-row>
                                 <ion-col col-12>
-                                <button  class=" purple-bg"  type="submit" ion-button  block >Save</button>
+                                <button  class=" purple-bg"  type="submit" ion-button  block (click)="addRecieveList(giveAways)" >Save</button>
                                 </ion-col>
                         </ion-row>
                         <ion-row>

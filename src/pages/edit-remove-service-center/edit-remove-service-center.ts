@@ -1,6 +1,6 @@
 import { ServiceCenter } from './../../models/service-center/service-center.interface';
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import { Subscription } from 'rxjs';
 //import { ServiceCenter } from '../../models/service-center/service-center.interface';
 import { FirebaseObjectObservable, FirebaseListObservable, AngularFireDatabase } from 'angularfire2/database-deprecated';
@@ -37,7 +37,7 @@ export class EditRemoveServiceCenterPage {
   itemRef: AngularFireObject<any>;
   item: Observable<any>;
   search: Observable<any>;
-  constructor(public navCtrl: NavController, public navParams: NavParams, public database: AngularFireDatabase) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public database: AngularFireDatabase,public alertCtrl: AlertController) {
     
     this.serviceListRef$ = this.database.list('service-center');
     let data=[];
@@ -130,12 +130,24 @@ this.serviceItemSubscription =
         address: this.serviceCenter.address,
         tele: Number(this.serviceCenter.tele)
       });
+      this.presentAlert("edited");
     }
 
     //this.navCtrl.pop();
   }
   removeServiceCenter(){
-    this.serviceListRef$.remove();
+    this.serviceItemRef$.remove();
+    this.presentAlert("removed");
+  }
+
+  presentAlert(msg:any){
+    const alert = this.alertCtrl.create({
+      title: 'Record added!',
+      subTitle: `Service center details  ${msg}`,
+     buttons: ['Okay']
+    });
+    alert.onDidDismiss(() => console.log('Alert was dismissed by the user'));
+    alert.present();
   }
 
 }

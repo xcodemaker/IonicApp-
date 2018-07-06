@@ -1,12 +1,13 @@
 import { RecordsAddPage } from './../records-add/records-add';
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database-deprecated';
 //import {RecordsAddPage} from '../records-add/records-add';
 
 import {TyreList} from '../../models/tyre-list/tyre-list.interface';
 import { DataProvider } from '../../providers/data/data';
 // import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import { ServiceCenter } from '../../models/service-center/service-center.interface';
 
 /**
  * Generated class for the AddTyrePage page.
@@ -23,17 +24,35 @@ import { DataProvider } from '../../providers/data/data';
 export class AddTyrePage {
   hasError: boolean;
   errorMessage: string;
+  items: string[];
   tyreList = {} as TyreList;
+  serviceCenter= {} as ServiceCenter;
 
-  tyreListRef$: FirebaseListObservable<TyreList[]>
+  tyreListRef$: FirebaseListObservable<TyreList[]>;
+  serviceCenterRef$: FirebaseListObservable<ServiceCenter[]>;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public database: DataProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public database: DataProvider,public alertCtrl: AlertController) {
     this.tyreListRef$ = this.database.list('tyre-list');
+    this.serviceCenterRef$=this.database.list('service-center');
 
+    let data=[];
+    this.serviceCenterRef$.forEach(element => {
+      console.log(element);
+      for(let i=0;i<element.length;i++){
+        data.push({
+            name:element[i].name
+        });     
+        
+       }
+
+      this.items =data;
+      console.log(data);
+  });
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad AddTyrePage');
+   
   }
   addTyreList(tyreList: TyreList) {
     //this.tyreListRef$ = this.database.list(`tyre-list/${this.tyreList.tyreNumber}`);
@@ -61,6 +80,8 @@ export class AddTyrePage {
       purchesDate:this.tyreList.purchesDate,
       tyrePrice: Number(this.tyreList.tyrePrice)
     });
+
+    this.presentAlert();
   }
 
     // Reset our ShoppingItem
@@ -70,6 +91,16 @@ export class AddTyrePage {
     //this.navCtrl.push('RecordsAddPage');
     //this.navCtrl.pop();
   
+}
+
+presentAlert(){
+  const alert = this.alertCtrl.create({
+    title: 'Record added!',
+    subTitle: `New tyre  added to database`,
+   buttons: ['Okay']
+  });
+  alert.onDidDismiss(() => console.log('Alert was dismissed by the user'));
+  alert.present();
 }
   
 

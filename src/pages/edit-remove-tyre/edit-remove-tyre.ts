@@ -1,5 +1,6 @@
+import { ServiceCenter } from './../../models/service-center/service-center.interface';
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import { TyreList } from '../../models/tyre-list/tyre-list.interface';
 import { FirebaseListObservable, AngularFireDatabase, FirebaseObjectObservable } from 'angularfire2/database-deprecated';
 import { DataProvider } from '../../providers/data/data';
@@ -25,6 +26,7 @@ export class EditRemoveTyrePage {
   //shoppingItem = {} as ShoppingItem;
   searchQuery: string = '';
   items: string[];
+  tyres: string[];
   x :string[];
   
 
@@ -32,11 +34,12 @@ export class EditRemoveTyrePage {
   errorMessage: string;
   tyreList = {} as TyreList;
 
-  tyreListRef$: FirebaseListObservable<TyreList[]>
+  tyreListRef$: FirebaseListObservable<TyreList[]>;
+  serviceCenterRef$: FirebaseListObservable<ServiceCenter[]>
   itemRef: AngularFireObject<any>;
   item: Observable<any>;
   search: Observable<any>;
-  constructor(public navCtrl: NavController, public navParams: NavParams, public database: AngularFireDatabase) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public database: DataProvider,public alertCtrl: AlertController) {
     
     this.tyreListRef$ = this.database.list('tyre-list');
     let data=[];
@@ -56,13 +59,27 @@ export class EditRemoveTyrePage {
         });     
         
        }
-      //x=element.length
-      //console.log('data :'+JSON.stringify(data));
-      //this.initializeItems(data);
-      this.items =data;
+
+       this.items =data;
+        console.log(data);
   });
   // console.log(element);
-  
+ 
+  this.serviceCenterRef$=this.database.list('service-center');
+
+let datas=[];
+this.serviceCenterRef$.forEach(element => {
+  console.log(element);
+  for(let i=0;i<element.length;i++){
+    datas.push({
+        name:element[i].name
+    });     
+    
+   }
+
+  this.tyres =datas;
+  // console.log(data);
+});
   
   }
 
@@ -72,17 +89,9 @@ export class EditRemoveTyrePage {
     console.log('ionViewDidLoad EditRemoveTyrePage');
   }
 
-  // initializeItems() {
-  //   this.items =this.x;
-  //   console.log('items init :'+this.items);
-  // }
-
   setItems(ev: any) {
-    // Reset items back to all of the items
-    //this.initializeItems();
     let data=[];
     let key;
-    // set val to the value of the searchbar
     let val = ev.target.value;
     this.tyreListRef$.forEach(element => {
       //console.log(element);
@@ -92,12 +101,8 @@ export class EditRemoveTyrePage {
         }
         
        }
-      
-      //x=element.length
       console.log('key :'+key);
   });
-
-    //let id = ev.target.id;
 console.log("value set : "+key);
 this.tyreItemRef$ = this.database.object(`tyre-list/${key}`);
 
@@ -105,13 +110,6 @@ this.tyreItemSubscription =
       this.tyreItemRef$.subscribe(
         tyreList => this.tyreList = tyreList);
   }
-
-    // if the value is an empty string don't filter the items
-    // if (val && val.trim() != '') {
-    //   this.items = this.items.filter((item) => {
-    //     return (item.toLowerCase().indexOf(val.toLowerCase()) > -1);
-    //   })
-    // }
     updateTyreList(tyreList: TyreList) {
 
       if (typeof(tyreList.tyreNumber) == "undefined"){
@@ -137,15 +135,27 @@ this.tyreItemSubscription =
         purchesDate:this.tyreList.purchesDate,
         tyrePrice: Number(this.tyreList.tyrePrice)
       });
+
+      this.presentAlert("edited");
     }
 
     //this.navCtrl.pop();
   }
   removeTyreList(){
     this.tyreItemRef$.remove();
+    this.presentAlert("removed");
   }
   ionViewWillLeave() {
     // Unsubscribe from the Observable when leaving the page
-    this.tyreItemSubscription.unsubscribe();
+    //this.tyreItemSubscription.unsubscribe();
+  }
+  presentAlert(msg:any){
+    const alert = this.alertCtrl.create({
+      title: 'Record added!',
+      subTitle: `Tyre details  ${msg}`,
+     buttons: ['Okay']
+    });
+    alert.onDidDismiss(() => console.log('Alert was dismissed by the user'));
+    alert.present();
   }
 }

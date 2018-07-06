@@ -4,13 +4,13 @@
   See http://ionicframework.com/docs/components/#navigation for more info on
   Ionic pages and navigation.
 -->
-<ion-header>
+<!-- <ion-header>
 
   <ion-navbar>
     <ion-title>AddTyre</ion-title>
   </ion-navbar>
 
-</ion-header>
+</ion-header> -->
 
 
 <ion-content padding>
@@ -23,11 +23,11 @@
         <input style="font-size:15px; height:50px; width:100%; opacity:0.7;" type="text" class="form-control" placeholder="Tyre Number"  autofocus [(ngModel)]="tyreList.tyreNumber" [ngModelOptions]="{standalone: true}" required/>
     </div>
     <div class="form-group">
-            <input list="browsers" name="myBrowser" placeholder="Tyre House" class="form-control" style="font-size:15px; height:50px; width:100%; opacity:0.7;" [(ngModel)]="tyreList.tyreHouse" [ngModelOptions]="{standalone: true}" required/>
-            <datalist id="browsers">
-              <option *ngFor="let item of tyreListRef$ | async" value="{{item.tyreHouse}}">
-            </datalist>
-            </div>
+      <input list="browsers" name="myBrowser" placeholder="Tyre House" class="form-control" style="font-size:15px; height:50px; width:100%; opacity:0.7;" [(ngModel)]="tyreList.tyreHouse" [ngModelOptions]="{standalone: true}"/>
+              <datalist id="browsers">
+                <option *ngFor="let item of items" value="{{item.name}}">
+              </datalist>
+      </div>
 <div class="form-group">
     <input style="font-size:15px; height:50px; width:100%; opacity:0.7" type="number" class="form-control" placeholder="Price"  [(ngModel)]="tyreList.tyrePrice" [ngModelOptions]="{standalone: true}" required/>
 </div>
